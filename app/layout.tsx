@@ -1,9 +1,13 @@
 import { PropsWithChildren } from "react";
 import "#/styles/globals.scss";
+import ThemePicker from "#/components/themePicker";
 
 const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang="en">
-    <body>{children}</body>
+    <body>
+      <ThemePicker />
+      {children}
+    </body>
   </html>
 );
 

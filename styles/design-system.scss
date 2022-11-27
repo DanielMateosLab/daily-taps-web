@@ -64,6 +64,14 @@
     #fffbff;
 }
 
+.dark {
+  @include dark;
+}
+
+.light {
+  @include light;
+}
+
 // Colors
 $c-primary: var(--primary);
 $c-on-primary: var(--on-primary);
