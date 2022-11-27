@@ -1,9 +1,17 @@
+@use "design-system.scss" as ds;
+
+:root {
+  @include ds.dark;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: ds.$c-background;
+  color: ds.$c-on-background;
 }
 
 a {
@@ -19,8 +27,16 @@ a {
   html {
     color-scheme: dark;
   }
-  body {
-    color: white;
-    background: black;
+  :root {
+    @include ds.dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+  :root {
+    @include ds.light;
   }
 }

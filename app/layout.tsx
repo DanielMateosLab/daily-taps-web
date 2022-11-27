@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import "#/styles/globals.scss";
 
 const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang="en">
