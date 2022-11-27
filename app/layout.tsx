@@ -1,7 +1,9 @@
 import { PropsWithChildren } from "react";
 
-const AppLayout: React.FC<PropsWithChildren> = ({ children }) => {
-  return <>{children}</>;
-};
+const RootLayout = ({ children }: PropsWithChildren) => (
+  <html lang="en">
+    <body>{children}</body>
+  </html>
+);
 
-export default AppLayout;
+export default RootLayout;
