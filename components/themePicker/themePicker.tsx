@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ThemeOption from "./themeOption";
 import "./themePicker.scss";
 
-enum Theme {
+export enum Theme {
   Light = "light",
   Dark = "dark",
   OS = "os",
@@ -43,19 +44,5 @@ const ThemePicker: React.FC = () => {
     </fieldset>
   );
 };
-
-interface OptionProps {
-  value: Theme;
-  checked: boolean;
-  onChange: () => void;
-}
-const ThemeOption: React.FC<OptionProps> = (props) => (
-  <div>
-    <input type="radio" name="theme" id={props.value} {...props} />
-    <label className="theme-picker-option__label" htmlFor={props.value}>
-      {props.value}
-    </label>
-  </div>
-);
 
 export default ThemePicker;
