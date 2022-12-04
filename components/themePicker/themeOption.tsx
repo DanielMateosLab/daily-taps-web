@@ -1,6 +1,5 @@
-import { Theme } from "#/static/theme";
+import { Theme } from "#/utils/theme";
 import { ReactNode } from "react";
-import "./themeOption.scss";
 
 interface OptionProps {
   value: Theme;

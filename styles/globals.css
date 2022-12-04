@@ -1,4 +1,6 @@
-@use "design-system.scss" as ds;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -7,8 +9,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   transition: all 0.25s linear;
-  background: ds.$c-background;
-  color: ds.$c-on-background;
 }
 
 a {
@@ -22,12 +22,12 @@ a {
 
 @media (prefers-color-scheme: dark) {
   body {
-    @include ds.dark;
+    /* TODO */
   }
 }
 
 @media (prefers-color-scheme: light) {
   body {
-    @include ds.light;
+    /* TODO */
   }
 }

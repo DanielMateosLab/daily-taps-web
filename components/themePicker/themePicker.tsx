@@ -1,9 +1,8 @@
 "use client";
 
-import { defaultTheme, Theme, themeIcons } from "#/static/theme";
+import { defaultTheme, Theme, themeIcons } from "#/utils/theme";
 import { useEffect, useState } from "react";
 import ThemeOption from "./themeOption";
-import "./themePicker.scss";
 
 const ThemePicker: React.FC = () => {
   const [theme, setTheme] = useState<Theme | null>(null);
