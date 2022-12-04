@@ -4,7 +4,7 @@ import ThemePicker from "#/components/themePicker/themePicker";
 
 const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang="en">
-    <body>
+    <body className="dark">
       <ThemePicker />
       {children}
     </body>

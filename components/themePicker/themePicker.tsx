@@ -7,27 +7,27 @@ import "./themePicker.scss";
 export enum Theme {
   Light = "light",
   Dark = "dark",
-  OS = "os",
+  System = "system",
 }
 
 const ThemePicker: React.FC = () => {
-  const [theme, setTheme] = useState(getInitialTheme());
+  const [theme, setTheme] = useState<Theme | null>(null);
 
-  function getInitialTheme() {
-    const savedTheme = localStorage.getItem("theme");
-    return isTheme(savedTheme) ? savedTheme : Theme.Dark;
-  }
-  function isTheme(theme: string | null): theme is Theme {
-    return !!theme && Object.values(Theme).includes(theme as Theme);
-  }
-  const saveTheme = (theme: Theme) => {
-    localStorage.setItem("theme", theme);
-    setTheme(theme);
+  const getInitialTheme = () => {
+    const storedTheme = localStorage.getItem("theme");
+    const isValid = Object.values(Theme).includes(storedTheme as Theme);
+    return isValid ? (storedTheme as Theme) : Theme.Dark;
+  };
+  const updateTheme = (newTheme: Theme) => {
+    document.body.classList.remove(Theme.Light, Theme.Dark);
+    document.body.classList.add(newTheme);
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+    updateTheme(getInitialTheme());
+  }, []);
 
   return (
     <fieldset className="theme-picker">
@@ -37,8 +37,8 @@ const ThemePicker: React.FC = () => {
         <ThemeOption
           key={themeOption}
           value={themeOption}
-          onChange={() => saveTheme(themeOption)}
-          checked={theme === themeOption}
+          onChange={() => updateTheme(themeOption)}
+          checked={themeOption === theme}
         />
       ))}
     </fieldset>
