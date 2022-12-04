@@ -24,7 +24,7 @@ const ThemePicker: React.FC = () => {
   }, []);
 
   return (
-    <fieldset className="theme-picker">
+    <fieldset className="bg-surface-1">
       <legend className="theme-picker__legend">Pick a color theme</legend>
 
       {Object.values(Theme).map((themeOption) => (

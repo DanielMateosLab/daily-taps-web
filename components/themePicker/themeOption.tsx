@@ -9,7 +9,7 @@ interface OptionProps {
 }
 
 const ThemeOption: React.FC<OptionProps> = (props) => (
-  <div className="bg-primary">
+  <div className="bg-surface-1">
     <input
       className="theme-option__input"
       type="radio"
@@ -17,7 +17,7 @@ const ThemeOption: React.FC<OptionProps> = (props) => (
       id={props.value}
       {...props}
     />
-    <label className="theme-picker-option__label" htmlFor={props.value}>
+    <label className="text-on-surface-light" htmlFor={props.value}>
       {props.value}
     </label>
   </div>

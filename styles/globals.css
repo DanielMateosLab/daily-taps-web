@@ -11,23 +11,34 @@ body {
   transition: all 0.25s linear;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    /* TODO */
+@layer base {
+  * {
+    box-sizing: border-box;
   }
-}
 
-@media (prefers-color-scheme: light) {
-  body {
-    /* TODO */
+  .dark {
+    --surface-1: 15, 23, 42;
+    --surface-2: 51, 65, 85;
+    --on-surface-normal: 249, 250, 251;
+    --on-surface-light: 203, 213, 225;
+  }
+
+  .light {
+    --surface-1: 226, 232, 240;
+    --surface-2: 250, 250, 250;
+    --on-surface-normal: 15, 23, 42;
+    --on-surface-light: 51, 65, 85;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      @apply dark;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    body {
+      @apply light;
+    }
   }
 }

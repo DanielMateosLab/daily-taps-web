@@ -8,7 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "var(--primary)",
+        "surface-1": "rgb(var(--surface-1), <alpha-value>)",
+        "surface-2": "rgb(var(--surface-2), <alpha-value>)",
+        "on-surface-normal": "rgb(var(--on-surface-normal), <alpha-value>)",
+        "on-surface-light": "rgb(var(--on-surface-light), <alpha-value>)",
       },
     },
   },
