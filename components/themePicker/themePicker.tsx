@@ -1,14 +1,9 @@
 "use client";
 
+import { defaultTheme, Theme, themeIcons } from "#/static/theme";
 import { useEffect, useState } from "react";
 import ThemeOption from "./themeOption";
 import "./themePicker.scss";
-
-export enum Theme {
-  Light = "light",
-  Dark = "dark",
-  System = "system",
-}
 
 const ThemePicker: React.FC = () => {
   const [theme, setTheme] = useState<Theme | null>(null);
@@ -16,7 +11,7 @@ const ThemePicker: React.FC = () => {
   const getInitialTheme = () => {
     const storedTheme = localStorage.getItem("theme");
     const isValid = Object.values(Theme).includes(storedTheme as Theme);
-    return isValid ? (storedTheme as Theme) : Theme.Dark;
+    return isValid ? (storedTheme as Theme) : defaultTheme;
   };
   const updateTheme = (newTheme: Theme) => {
     document.body.classList.remove(Theme.Light, Theme.Dark);
@@ -39,6 +34,7 @@ const ThemePicker: React.FC = () => {
           value={themeOption}
           onChange={() => updateTheme(themeOption)}
           checked={themeOption === theme}
+          icon={themeIcons[themeOption]}
         />
       ))}
     </fieldset>
