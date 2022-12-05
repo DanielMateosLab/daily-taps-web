@@ -1,9 +1,20 @@
+"use client";
+
 import LoginForm from "#/components/LoginForm";
 import ThemePicker from "#/components/themePicker/themePicker";
+import { RefCallback, useCallback } from "react";
+import "#/styles/app.css";
 
 export default function Page() {
+  const pageCb: RefCallback<HTMLDivElement> = useCallback((node) => {
+    if (node) {
+      node.classList.add("rendered");
+      node.style.height = `${window.innerHeight}px`;
+    }
+  }, []);
+
   return (
-    <div className="container flex flex-col min-h-screen">
+    <div ref={pageCb} className="container flex flex-col">
       <main className="grow flex flex-col gap-6 py-8">
         <h1 className="text-primary text-8xl text-center">DAILY TAPS</h1>
         <p className="text-on-surface-light text-2xl text-center">

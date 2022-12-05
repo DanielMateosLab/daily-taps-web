@@ -1,0 +1,7 @@
+.rendered > footer {
+  visibility: visible;
+}
+
+footer {
+  visibility: hidden;
+}
