@@ -1,13 +1,9 @@
-import { PropsWithChildren } from "react";
 import "#/styles/globals.css";
-import ThemePicker from "#/components/themePicker/themePicker";
+import { PropsWithChildren } from "react";
 
 const RootLayout = ({ children }: PropsWithChildren) => (
   <html lang="en">
-    <body className="dark bg-surface-1 text-on-surface-normal">
-      <ThemePicker />
-      {children}
-    </body>
+    <body className="dark bg-surface-1 text-on-surface-normal">{children}</body>
   </html>
 );
 
