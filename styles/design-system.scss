@@ -1,0 +1,109 @@
+@mixin dark {
+  --primary: #41e092;
+  --on-primary: #00391f;
+  --primary-container: #00522f;
+  --on-primary-container: #64feac;
+  --background: #191c1a;
+  --on-background: #e1e3de;
+  --surface-1: linear-gradient(
+      0deg,
+      rgba(212, 187, 255, 0.05),
+      rgba(212, 187, 255, 0.05)
+    ),
+    #1d1b1e;
+  --surface-2: linear-gradient(
+      0deg,
+      rgba(212, 187, 255, 0.08),
+      rgba(212, 187, 255, 0.08)
+    ),
+    #1d1b1e;
+  --surface-3: linear-gradient(
+      0deg,
+      rgba(212, 187, 255, 0.11),
+      rgba(212, 187, 255, 0.11)
+    ),
+    #1d1b1e;
+  --surface-4: linear-gradient(
+      0deg,
+      rgba(212, 187, 255, 0.14),
+      rgba(212, 187, 255, 0.14)
+    ),
+    #1d1b1e;
+}
+
+@mixin light {
+  --primary: #006d41;
+  --on-primary: #ffffff;
+  --primary-container: #64feac;
+  --on-primary-container: #002110;
+  --background: #fbfdf8;
+  --on-background: #191c1a;
+  --surface-1: linear-gradient(
+      0deg,
+      rgba(117, 52, 218, 0.05),
+      rgba(117, 52, 218, 0.05)
+    ),
+    #fffbff;
+  --surface-2: linear-gradient(
+      0deg,
+      rgba(117, 52, 218, 0.08),
+      rgba(117, 52, 218, 0.08)
+    ),
+    #fffbff;
+  --surface-3: linear-gradient(
+      0deg,
+      rgba(117, 52, 218, 0.11),
+      rgba(117, 52, 218, 0.11)
+    ),
+    #fffbff;
+  --surface-4: linear-gradient(
+      0deg,
+      rgba(117, 52, 218, 0.14),
+      rgba(117, 52, 218, 0.14)
+    ),
+    #fffbff;
+}
+
+.dark {
+  @include dark;
+}
+
+.light {
+  @include light;
+}
+
+// Colors
+$c-primary: var(--primary);
+$c-on-primary: var(--on-primary);
+$c-primary-container: var(--primary-container);
+$c-on-primary-container: var(--on-primary-container);
+$c-background: var(--background);
+$c-on-background: var(--on-background);
+$c-surface-1: var(--surface-1);
+$c-surface-2: var(--surface-2);
+$c-surface-3: var(--surface-3);
+$c-surface-4: var(--surface-4);
+
+// Font Sizes
+$fs-display-large: 3.56rem;
+$fs-display-medium: 2.81rem;
+$fs-display-small: 2.25rem;
+$fs-headline-large: 2rem;
+$fs-headline-medium: 1.75rem;
+$fs-headline-small: 1.5rem;
+$fs-title-large: 1.38rem;
+$fs-title-medium: 1rem;
+$fs-title-small: 0.88rem;
+$fs-label-large: 0.88rem;
+$fs-label-medium: 0.75rem;
+$fs-label-small: 0.69rem;
+$fs-body-large: 1rem;
+$fs-body-medium: 0.88rem;
+$fs-body-small: 0.75rem;
+
+// Breakpoints
+$br-sm: 576px;
+// $br-md: 768px;
+$br-lg: 992px;
+// $br-xl: 1200px;
+$br-xxl: 1400px;
