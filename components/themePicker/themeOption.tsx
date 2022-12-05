@@ -10,7 +10,7 @@ interface OptionProps {
 
 const ThemeOption: React.FC<OptionProps> = (props) => {
   const iconColorClass = props.checked
-    ? "text-primary"
+    ? "text-primary-contrast"
     : "text-on-surface-light";
 
   return (
