@@ -12,7 +12,9 @@ body {
 }
 
 @layer base {
-  * {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
@@ -41,5 +43,11 @@ body {
     body {
       @apply light;
     }
+  }
+}
+
+@supports (size: 0svh) {
+  .min-h-screen {
+    min-height: 100svh;
   }
 }

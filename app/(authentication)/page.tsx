@@ -1,10 +1,11 @@
 "use client";
 
-import { Form, Formik } from "formik";
+import AuthFormWrapper from "#/components/AuthFormWrapper";
+import AuthSwitcher from "#/components/AuthSwitcher";
 import PrimaryButton from "#/components/PrimaryButton";
 import TextField from "#/components/TextField";
 import { loginValidator } from "#/utils/validation/loginValidator";
-import AuthFormWrapper from "#/components/AuthFormWrapper";
+import { Formik } from "formik";
 
 const LoginForm = () => (
   <Formik
@@ -19,6 +20,7 @@ const LoginForm = () => (
         <div className="mt-4 w-full">
           <PrimaryButton text="Login" disabled={isSubmitting} />
         </div>
+        <AuthSwitcher />
       </AuthFormWrapper>
     )}
   </Formik>
