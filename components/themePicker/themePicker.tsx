@@ -13,10 +13,14 @@ const ThemePicker: React.FC = () => {
     return isValid ? (storedTheme as Theme) : defaultTheme;
   };
   const updateTheme = (newTheme: Theme) => {
-    document.body.classList.remove(Theme.Light, Theme.Dark);
-    document.body.classList.add(newTheme);
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+    document.body.classList.remove(Theme.Light, Theme.Dark);
+    if (newTheme !== Theme.System) {
+      document.body.classList.add(newTheme);
+      localStorage.setItem("theme", newTheme);
+    } else {
+      localStorage.removeItem("theme");
+    }
   };
 
   useEffect(() => {

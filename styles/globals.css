@@ -18,6 +18,7 @@ body {
 
   body {
     --primary: 107, 33, 168;
+    @apply dark;
   }
 
   .dark {
@@ -34,12 +35,6 @@ body {
     --on-surface-normal: 15, 23, 42;
     --on-surface-light: 51, 65, 85;
     --primary-contrast: 91, 33, 182;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      @apply dark;
-    }
   }
 
   @media (prefers-color-scheme: light) {
