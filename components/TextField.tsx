@@ -25,9 +25,7 @@ const TextField: React.FC<TextFieldProps> = (props) => {
         {...field}
         {...props}
       />
-      <div className="h-5 text-sm text-red-500 capitalize">
-        {invalid && meta.error}
-      </div>
+      <div className="h-5 text-sm text-red-500">{invalid && meta.error}</div>
     </div>
   );
 };
