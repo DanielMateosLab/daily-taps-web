@@ -12,11 +12,14 @@ const ThemeOption: React.FC<OptionProps> = (props) => {
   const iconColorClass = props.checked
     ? "text-primary-contrast"
     : "text-on-surface-light";
+  const baseOpacity = props.checked ? "opacity-100" : "opacity-70";
 
   return (
-    <div className="relative grid place-items-center ">
+    <div
+      className={`relative grid place-items-center ${baseOpacity} hover:opacity-100`}
+    >
       <input
-        className="absolute w-full h-full bg-surface-1 checked:bg-surface-2 checked:pointer-events-none appearance-none cursor-pointer"
+        className="absolute w-full h-full bg-surface-1 hover:bg-primary hover:bg-opacity-10 checked:bg-surface-2 checked:pointer-events-none appearance-none cursor-pointer"
         type="radio"
         name="theme"
         id={props.value}
