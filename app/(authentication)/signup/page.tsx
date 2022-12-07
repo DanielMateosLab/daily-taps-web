@@ -4,6 +4,7 @@ import { Form, Formik } from "formik";
 import PrimaryButton from "#/components/PrimaryButton";
 import TextField from "#/components/TextField";
 import { signUpValidator } from "#/utils/validation/signUpValidator";
+import AuthFormWrapper from "#/components/AuthFormWrapper";
 
 const SignupForm = () => (
   <Formik
@@ -12,7 +13,7 @@ const SignupForm = () => (
     onSubmit={(values) => console.log(JSON.stringify(values, null, 2))}
   >
     {({ isSubmitting }) => (
-      <Form className="w-full md:max-lg:w-4/6 flex gap-0.5 flex-col" noValidate>
+      <AuthFormWrapper>
         <TextField label="Email" name="email" type="email" />
         <TextField label="Password" name="password" type="password" />
         <TextField
@@ -23,7 +24,7 @@ const SignupForm = () => (
         <div className="mt-4 w-full">
           <PrimaryButton text="Sign up" disabled={isSubmitting} />
         </div>
-      </Form>
+      </AuthFormWrapper>
     )}
   </Formik>
 );

@@ -11,7 +11,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => (
         The best companion for your workouts
       </p>
 
-      {children}
+      <div className="flex">{children}</div>
     </main>
 
     <footer className="flex gap-6 justify-center items-center py-4">
