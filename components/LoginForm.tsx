@@ -11,12 +11,20 @@ const LoginForm = () => (
     validationSchema={validationSchema}
     onSubmit={(values) => console.log(JSON.stringify(values, null, 2))}
   >
-    {({ isSubmitting, isValid }) => (
-      <Form className="flex flex-col gap-0.5" noValidate>
-        <TextField label="Email" name="email" type="email" />
-        <TextField label="Password" name="password" type="password" />
-        <div className="mt-4 w-full">
-          <PrimaryButton text="Login" disabled={isSubmitting || !isValid} />
+    {({ isSubmitting }) => (
+      <Form
+        className={`w-full md:w-4/6 flex gap-0.5 flex-col
+          lg:grid lg:gap-x-6 grid-cols-[1fr_1fr] [grid-template-areas:"e_p"_"b_b"]`}
+        noValidate
+      >
+        <div className="w-full [grid-area:e]">
+          <TextField label="Email" name="email" type="email" />
+        </div>
+        <div className="w-full [grid-area:p]">
+          <TextField label="Password" name="password" type="password" />
+        </div>
+        <div className="mt-4 w-full [grid-area:b]">
+          <PrimaryButton text="Login" disabled={isSubmitting} />
         </div>
       </Form>
     )}
