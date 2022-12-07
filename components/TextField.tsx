@@ -16,7 +16,7 @@ const TextField: React.FC<TextFieldProps> = (props) => {
 
   return (
     <div className="flex flex-col gap-1.5 relative">
-      <label className="text-on-surface-light" htmlFor={props.name}>
+      <label className="text-on-surface-light text-base" htmlFor={props.name}>
         {props.label}
       </label>
       <input
@@ -25,7 +25,9 @@ const TextField: React.FC<TextFieldProps> = (props) => {
         {...field}
         {...props}
       />
-      <div className="h-5 text-sm text-red-500">{invalid && meta.error}</div>
+      <div className="h-5 text-sm text-red-500 capitalize">
+        {invalid && meta.error}
+      </div>
     </div>
   );
 };
