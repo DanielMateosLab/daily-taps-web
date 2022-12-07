@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { loginValidator } from "./loginValidator";
 
-export const signupValidator = loginValidator.shape({
+export const signUpValidator = loginValidator.shape({
   repeatPassword: Yup.string()
     .required("Repeat your password.")
     .test(
