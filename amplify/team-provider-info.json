@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dailytaps-dev-163154-authRole",
+      "UnauthRoleArn": "arn:aws:iam::121867889905:role/amplify-dailytaps-dev-163154-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::121867889905:role/amplify-dailytaps-dev-163154-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-dailytaps-dev-163154-deployment",
+      "UnauthRoleName": "amplify-dailytaps-dev-163154-unauthRole",
+      "StackName": "amplify-dailytaps-dev-163154",
+      "StackId": "arn:aws:cloudformation:eu-west-3:121867889905:stack/amplify-dailytaps-dev-163154/ebd1bf90-8c44-11ed-8a70-0669195c2e40",
+      "AmplifyAppId": "d9dzjg0xc608c"
+    }
+  }
+}
