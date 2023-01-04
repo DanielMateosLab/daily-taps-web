@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "dailytaps",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authdailytapsdb4b9fc7",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

@@ -10,6 +10,14 @@
       "StackName": "amplify-dailytaps-dev-163154",
       "StackId": "arn:aws:cloudformation:eu-west-3:121867889905:stack/amplify-dailytaps-dev-163154/ebd1bf90-8c44-11ed-8a70-0669195c2e40",
       "AmplifyAppId": "d9dzjg0xc608c"
+    },
+    "categories": {
+      "auth": {
+        "dailytapsdb4b9fc7": {}
+      },
+      "api": {
+        "dailytaps": {}
+      }
     }
   }
 }
