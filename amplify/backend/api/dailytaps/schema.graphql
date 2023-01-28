@@ -1,11 +1,41 @@
-# This "input" configures a global authorization rule to enable public access to
-# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY {
-  globalAuthRule: AuthRule = { allow: public }
-} # FOR TESTING ONLY!
-type Workout
-  @model
-  @auth(rules: [{ allow: owner }, { allow: public, operations: [read] }]) {
+type Exercise @model @auth(rules: [{allow: owner}]) {
   id: ID!
-  title: String!
+  name: String!
+  description: String
+  LoadUnit: LoadUnit @hasOne
 }
+
+type Workout @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  name: String!
+  date: AWSDate!
+  SetGroups: [SetGroup] @hasMany(indexName: "byWorkout", fields: ["id"])
+}
+
+type SetGroup @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  workoutID: ID! @index(name: "byWorkout")
+  SetExercises: [SetExercise] @hasMany(indexName: "bySetGroup", fields: ["id"])
+}
+
+type SetExercise @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  weigth: Int
+  load: Int
+  rpe: Int
+  Exercise: Exercise @hasOne
+  setID: ID! @index(name: "bySet")
+  setgroupID: ID! @index(name: "bySetGroup")
+}
+
+type LoadUnit @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+}
+
+type Set @model @auth(rules: [{allow: owner}]) {
+  id: ID!
+  restTime: Int
+  SetExercises: [SetExercise] @hasMany(indexName: "bySet", fields: ["id"])
+}
+ 

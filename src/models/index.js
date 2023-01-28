@@ -4,8 +4,13 @@ import { schema } from './schema';
 
 
 
-const { Workout } = initSchema(schema);
+const { Exercise, LoadUnit, Workout, SetGroup, SetExercise, Set } = initSchema(schema);
 
 export {
-  Workout
+  Exercise,
+  LoadUnit,
+  Workout,
+  SetGroup,
+  SetExercise,
+  Set
 };
