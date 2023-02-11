@@ -1,12 +1,12 @@
-import { Heading } from "@aws-amplify/ui-react";
+import { Heading, View } from "@aws-amplify/ui-react";
 
 const NewWorkout = () => {
   return (
-    <div className="flex flex-col items-center pt-8">
+    <View className="flex flex-col items-center pt-8">
       <Heading level={1} variation="primary">
         Create a new workout
       </Heading>
-    </div>
+    </View>
   );
 };
 
