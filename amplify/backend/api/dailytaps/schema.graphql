@@ -1,24 +1,24 @@
-type Exercise @model @auth(rules: [{allow: owner}]) {
+type Exercise @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
   description: String
   LoadUnit: LoadUnit @hasOne
 }
 
-type Workout @model @auth(rules: [{allow: owner}]) {
+type Workout @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
-  date: AWSDate!
+  date: AWSDateTime!
   SetGroups: [SetGroup] @hasMany(indexName: "byWorkout", fields: ["id"])
 }
 
-type SetGroup @model @auth(rules: [{allow: owner}]) {
+type SetGroup @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   workoutID: ID! @index(name: "byWorkout")
   SetExercises: [SetExercise] @hasMany(indexName: "bySetGroup", fields: ["id"])
 }
 
-type SetExercise @model @auth(rules: [{allow: owner}]) {
+type SetExercise @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   weigth: Int
   load: Int
@@ -28,14 +28,13 @@ type SetExercise @model @auth(rules: [{allow: owner}]) {
   setgroupID: ID! @index(name: "bySetGroup")
 }
 
-type LoadUnit @model @auth(rules: [{allow: public}]) {
+type LoadUnit @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String
 }
 
-type Set @model @auth(rules: [{allow: owner}]) {
+type Set @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   restTime: Int
   SetExercises: [SetExercise] @hasMany(indexName: "bySet", fields: ["id"])
 }
- 
