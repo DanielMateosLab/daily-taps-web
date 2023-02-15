@@ -1,8 +1,9 @@
 import { useTheme, View } from "@aws-amplify/ui-react";
 import { css } from "@emotion/react";
 import { FC, PropsWithChildren } from "react";
+import ColorModePicker from "./ColorModePicker";
 
-const BodyBackgroundManager: FC<PropsWithChildren> = ({ children }) => {
+const ColorModeManager: FC<PropsWithChildren> = ({ children }) => {
   const theme = useTheme();
 
   return (
@@ -13,8 +14,11 @@ const BodyBackgroundManager: FC<PropsWithChildren> = ({ children }) => {
       `}
     >
       {children}
+      <div className="fixed bottom-5 flex w-full justify-center">
+        <ColorModePicker />
+      </div>
     </View>
   );
 };
 
-export default BodyBackgroundManager;
+export default ColorModeManager;
