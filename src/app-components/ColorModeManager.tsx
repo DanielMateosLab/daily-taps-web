@@ -8,6 +8,7 @@ const ColorModeManager: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <View
+      className="relative"
       css={css`
         min-height: 100svh;
         background: ${theme.tokens.colors.background.primary.toString()};

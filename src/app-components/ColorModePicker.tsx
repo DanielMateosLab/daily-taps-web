@@ -7,7 +7,6 @@ const ColorModePicker = () => {
 
   return (
     <ToggleButtonGroup
-      className="fixed top-0 right-0"
       value={colorMode}
       isExclusive
       // @ts-ignore
