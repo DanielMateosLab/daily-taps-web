@@ -1,6 +1,7 @@
 import { ToggleButton, ToggleButtonGroup } from "@aws-amplify/ui-react";
 import { useContext } from "react";
 import { colorModeContext } from "./AppThemeProvider";
+import { MdDarkMode, MdLightMode, MdSettingsBrightness } from "react-icons/md";
 
 const ColorModePicker = () => {
   const { colorMode, setColorMode } = useContext(colorModeContext);
@@ -12,9 +13,16 @@ const ColorModePicker = () => {
       // @ts-ignore
       onChange={setColorMode}
     >
-      <ToggleButton value="light">Light</ToggleButton>
-      <ToggleButton value="dark">Dark</ToggleButton>
-      <ToggleButton value="system">System</ToggleButton>
+      <ToggleButton value="light" title="light">
+        <MdLightMode className="mr-2" /> Light
+      </ToggleButton>
+      <ToggleButton value="dark">
+        <MdDarkMode className="mr-2" /> Dark
+      </ToggleButton>
+      <ToggleButton value="system">
+        <MdSettingsBrightness className="mr-2" />
+        System
+      </ToggleButton>
     </ToggleButtonGroup>
   );
 };
