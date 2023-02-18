@@ -1,43 +1,53 @@
-import { Button, Heading, View } from "@aws-amplify/ui-react";
+import { Alert, Button, Heading, View } from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
 import { Form, Formik } from "formik";
+import { useState } from "react";
 import FormikTextField from "../src/app-components/FormikTextField";
 import { Workout } from "../src/models";
 import toDateInputValue from "../src/utils/toDateInputValue";
 
 const NewWorkout = () => {
-  const handleSubmit = async () => {
+  const initialValues = {
+    name: "",
+    date: toDateInputValue(new Date()),
+  };
+  type Values = typeof initialValues;
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (values: Values) => {
     try {
-      await DataStore.save(
-        new Workout({
-          date: new Date().toISOString(),
-          name: "My first workout",
-        }),
-      );
-      console.log("Post saved successfully!");
-    } catch (error) {
-      console.log("Error saving post", error);
+      await DataStore.save(new Workout(values));
+    } catch {
+      setError(true);
     }
   };
 
-  // TODO: change color picker to use icons (using react-icons)
-  // revert graphql schema to use date instead of DateTime in the date field
-
   return (
-    <View className="flex flex-col items-center pt-8">
-      <Heading level={1} variation="primary">
+    <View className="flex max-w-lg flex-col items-center gap-4 pt-8">
+      <Heading level={1} variation="primary" className="text-center">
         Create a new workout
       </Heading>
-      <Formik
-        initialValues={{ name: "", date: toDateInputValue(new Date()) }}
-        onSubmit={(values) => console.log(values)}
-      >
-        <Form className="flex flex-col gap-4">
-          <FormikTextField name="name" label="Name" />
-          <FormikTextField name="date" label="Date" type="date" />
-          <Button type="submit" variation="primary">
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Form className="flex flex-col items-center gap-4">
+          <FormikTextField name="name" label="Name" className="w-72" />
+          <FormikTextField
+            name="date"
+            label="Date"
+            type="date"
+            className="w-72"
+          />
+          <Button type="submit" variation="primary" className="w-72">
             Create
           </Button>
+          {error && (
+            <Alert
+              variation="error"
+              isDismissible
+              onDismiss={() => setError(false)}
+            >
+              An unexpected error occurred. Try again.
+            </Alert>
+          )}
         </Form>
       </Formik>
     </View>

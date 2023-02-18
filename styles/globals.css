@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/* Amplify classes need to be imported after base but before utilities. 
+  - If imported before base, things like primary button styles don't work.
+  - If imported after utilities, utility classes wont work in amplify components.
+*/
+@import "../node_modules/@aws-amplify/ui-react/dist/styles.css";
+
+@import "tailwindcss/utilities";
 
 *,
 *::before,
