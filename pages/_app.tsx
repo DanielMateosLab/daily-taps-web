@@ -1,3 +1,7 @@
+// This css import has to come first or theme colors are not properly applied
+// The line break prevents "organize imports" vscode action from changing the order
+import "../styles/globals.css";
+
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import "@fontsource/inter/variable.css";
@@ -8,7 +12,7 @@ import AppAuthenticator from "../src/app-components/AppAuthenticator";
 import AppThemeProvider from "../src/app-components/AppThemeProvider";
 import ColorModeManager from "../src/app-components/ColorModeManager";
 import awsExports from "../src/aws-exports";
-import "../styles/globals.css";
+
 Amplify.configure({ ...awsExports, ssr: true });
 
 export default function App({ Component, pageProps }: AppProps) {
