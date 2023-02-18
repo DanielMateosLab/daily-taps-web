@@ -8,7 +8,7 @@ type Exercise @model @auth(rules: [{ allow: owner }]) {
 type Workout @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
-  date: AWSDateTime!
+  date: AWSDate!
   SetGroups: [SetGroup] @hasMany(indexName: "byWorkout", fields: ["id"])
 }
 
