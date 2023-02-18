@@ -3,9 +3,10 @@ import { DataStore } from "aws-amplify";
 import { Form, Formik } from "formik";
 import FormikTextField from "../src/app-components/FormikTextField";
 import { Workout } from "../src/models";
+import toDateInputValue from "../src/utils/toDateInputValue";
 
 const NewWorkout = () => {
-  const hanldeSubmit = async () => {
+  const handleSubmit = async () => {
     try {
       await DataStore.save(
         new Workout({
@@ -20,7 +21,6 @@ const NewWorkout = () => {
   };
 
   // TODO: change color picker to use icons (using react-icons)
-  // see how to set the format of the initial date
   // revert graphql schema to use date instead of DateTime in the date field
 
   return (
@@ -29,7 +29,7 @@ const NewWorkout = () => {
         Create a new workout
       </Heading>
       <Formik
-        initialValues={{ name: "", date: new Date().toISOString() }}
+        initialValues={{ name: "", date: toDateInputValue(new Date()) }}
         onSubmit={(values) => console.log(values)}
       >
         <Form className="flex flex-col gap-4">
