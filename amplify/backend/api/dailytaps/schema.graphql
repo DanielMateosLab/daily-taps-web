@@ -1,3 +1,44 @@
+enum WorkoutSliceType {
+  SINGLE
+  MULTIPLE
+}
+
+type WorkoutSlice {
+  type: WorkoutSliceType
+  id: ID
+}
+
+type Workout @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  name: String!
+  date: AWSDate!
+  workoutSlices: [WorkoutSlice!]
+  MultipleExercisesSlices: [MultipleExercisesSlice]
+    @hasMany(indexName: "byWorkout", fields: ["id"])
+  SingleExerciseSlices: [SingleExerciseSlice]
+    @hasMany(indexName: "byWorkout", fields: ["id"])
+}
+
+type LoadUnit @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  name: String
+}
+
+type MultipleExercisesSlice @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  workoutID: ID! @index(name: "byWorkout")
+}
+
+type Set @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  weigth: Int
+  load: Int
+  rpe: Int
+  Exercise: Exercise @hasOne
+  setgroupID: ID! @index(name: "bySet")
+  singleexercisesliceID: ID! @index(name: "bySingleExerciseSlice")
+}
+
 type Exercise @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String!
@@ -5,36 +46,9 @@ type Exercise @model @auth(rules: [{ allow: owner }]) {
   LoadUnit: LoadUnit @hasOne
 }
 
-type Workout @model @auth(rules: [{ allow: owner }]) {
-  id: ID!
-  name: String!
-  date: AWSDate!
-  SetGroups: [SetGroup] @hasMany(indexName: "byWorkout", fields: ["id"])
-}
-
-type SetGroup @model @auth(rules: [{ allow: owner }]) {
-  id: ID!
-  workoutID: ID! @index(name: "byWorkout")
-  SetExercises: [SetExercise] @hasMany(indexName: "bySetGroup", fields: ["id"])
-}
-
-type SetExercise @model @auth(rules: [{ allow: owner }]) {
-  id: ID!
-  weigth: Int
-  load: Int
-  rpe: Int
-  Exercise: Exercise @hasOne
-  setID: ID! @index(name: "bySet")
-  setgroupID: ID! @index(name: "bySetGroup")
-}
-
-type LoadUnit @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  name: String
-}
-
-type Set @model @auth(rules: [{ allow: owner }]) {
+type SingleExerciseSlice @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   restTime: Int
-  SetExercises: [SetExercise] @hasMany(indexName: "bySet", fields: ["id"])
+  Sets: [Set] @hasMany(indexName: "bySingleExerciseSlice", fields: ["id"])
+  workoutID: ID! @index(name: "byWorkout")
 }

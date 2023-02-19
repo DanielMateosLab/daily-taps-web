@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { Workout } from "../models";
 export declare type ValidationResponse = {
@@ -16,16 +16,19 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type WorkoutUpdateFormInputValues = {
     name?: string;
     date?: string;
+    workoutSlices?: string;
 };
 export declare type WorkoutUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
     date?: ValidationFunction<string>;
+    workoutSlices?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type WorkoutUpdateFormOverridesProps = {
     WorkoutUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
     date?: PrimitiveOverrideProps<TextFieldProps>;
+    workoutSlices?: PrimitiveOverrideProps<SelectFieldProps>;
 } & EscapeHatchProps;
 export declare type WorkoutUpdateFormProps = React.PropsWithChildren<{
     overrides?: WorkoutUpdateFormOverridesProps | undefined | null;

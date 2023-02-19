@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SelectField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Workout } from "../models";
 import { fetchByPath, validateField } from "./utils";
@@ -25,18 +31,24 @@ export default function WorkoutCreateForm(props) {
   const initialValues = {
     name: "",
     date: "",
+    workoutSlices: undefined,
   };
   const [name, setName] = React.useState(initialValues.name);
   const [date, setDate] = React.useState(initialValues.date);
+  const [workoutSlices, setWorkoutSlices] = React.useState(
+    initialValues.workoutSlices
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
     setDate(initialValues.date);
+    setWorkoutSlices(initialValues.workoutSlices);
     setErrors({});
   };
   const validations = {
     name: [{ type: "Required" }],
     date: [{ type: "Required" }],
+    workoutSlices: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -65,6 +77,7 @@ export default function WorkoutCreateForm(props) {
         let modelFields = {
           name,
           date,
+          workoutSlices,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -121,6 +134,7 @@ export default function WorkoutCreateForm(props) {
             const modelFields = {
               name: value,
               date,
+              workoutSlices,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -147,6 +161,7 @@ export default function WorkoutCreateForm(props) {
             const modelFields = {
               name,
               date: value,
+              workoutSlices,
             };
             const result = onChange(modelFields);
             value = result?.date ?? value;
@@ -161,6 +176,43 @@ export default function WorkoutCreateForm(props) {
         hasError={errors.date?.hasError}
         {...getOverrideProps(overrides, "date")}
       ></TextField>
+      <SelectField
+        label="Workout slices"
+        placeholder="Please select an option"
+        isDisabled={false}
+        value={workoutSlices}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              date,
+              workoutSlices: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.workoutSlices ?? value;
+          }
+          if (errors.workoutSlices?.hasError) {
+            runValidationTasks("workoutSlices", value);
+          }
+          setWorkoutSlices(value);
+        }}
+        onBlur={() => runValidationTasks("workoutSlices", workoutSlices)}
+        errorMessage={errors.workoutSlices?.errorMessage}
+        hasError={errors.workoutSlices?.hasError}
+        {...getOverrideProps(overrides, "workoutSlices")}
+      >
+        <option
+          children="Single"
+          value="SINGLE"
+          {...getOverrideProps(overrides, "workoutSlicesoption0")}
+        ></option>
+        <option
+          children="Multiple"
+          value="MULTIPLE"
+          {...getOverrideProps(overrides, "workoutSlicesoption1")}
+        ></option>
+      </SelectField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
