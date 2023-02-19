@@ -8,6 +8,11 @@
 @import "../node_modules/@aws-amplify/ui-react/dist/styles.css";
 
 @import "tailwindcss/utilities";
+@layer utilities {
+  .min-h-screen {
+    min-height: 100svh;
+  }
+}
 
 *,
 *::before,
