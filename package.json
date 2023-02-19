@@ -9,15 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aws-amplify/datastore": "^4.0.14",
-    "@aws-amplify/ui-react": "^4.3.5",
+    "@aws-amplify/datastore": "^4.0.15",
+    "@aws-amplify/ui-react": "^4.3.8",
     "@emotion/react": "^11.10.5",
     "@fontsource/inter": "^4.5.15",
     "@next/font": "13.1.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
-    "aws-amplify": "^5.0.11",
+    "aws-amplify": "^5.0.15",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "formik": "^2.2.9",
