@@ -1,15 +1,15 @@
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@fontsource/inter/variable.css";
-import { Amplify } from "aws-amplify";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import AppAuthenticator from "../src/app-components/AppAuthenticator";
 import AppThemeProvider from "../src/app-components/AppThemeProvider";
 import ColorModeManager from "../src/app-components/ColorModeManager";
-import awsExports from "../src/aws-exports";
 import "../styles/globals.css";
 
-Amplify.configure({ ...awsExports, ssr: true });
+// TODO: Remove this once vercel/next.js#16977 is resolved
+// Note: Once vercel/next.js#16977 is resolved, you can hoist Amplify.configure into pages/_app.js. Until then, be sure that all pages/* run Amplify.configure({ ...awsExports, ssr: true })
+// Amplify.configure({ ...awsExports, ssr: true });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

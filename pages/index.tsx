@@ -5,7 +5,11 @@ import {
   useAuthenticator,
   View,
 } from "@aws-amplify/ui-react";
+import { Amplify } from "aws-amplify";
 import { useRouter } from "next/router";
+import awsExports from "../src/aws-exports";
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 export default function Home() {
   const { user, signOut } = useAuthenticator((context) => [context.user]);

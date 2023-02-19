@@ -1,12 +1,15 @@
 import { Alert, Button, Heading, View } from "@aws-amplify/ui-react";
-import { DataStore } from "aws-amplify";
+import { Amplify, DataStore } from "aws-amplify";
 import { Form, Formik } from "formik";
 import { useEffect, useRef, useState } from "react";
 import FormikTextField, {
   FormikTextFieldRef,
 } from "../src/app-components/FormikTextField";
-import { Workout } from "../src/models";
 import toDateInputValue from "../src/utils/toDateInputValue";
+import awsExports from "../src/aws-exports";
+import { Workout } from "../src/models";
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 const NewWorkout = () => {
   const initialValues = {
@@ -23,8 +26,10 @@ const NewWorkout = () => {
 
   const handleSubmit = async (values: Values) => {
     try {
-      await DataStore.save(new Workout(values));
-    } catch {
+      const workout = await DataStore.save(new Workout(values));
+      console.log("Workout created successfully!", workout.id);
+    } catch (err) {
+      console.error(err);
       setError(true);
     }
   };
