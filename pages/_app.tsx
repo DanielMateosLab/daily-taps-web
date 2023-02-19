@@ -4,7 +4,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import AppAuthenticator from "../src/app-components/AppAuthenticator";
 import AppThemeProvider from "../src/app-components/AppThemeProvider";
-import ColorModeManager from "../src/app-components/ColorModeManager";
+import Layout from "../src/app-components/Layout";
 import "../styles/globals.css";
 
 // TODO: Remove this once vercel/next.js#16977 is resolved
@@ -24,13 +24,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppThemeProvider>
-        <ColorModeManager>
-          <Authenticator.Provider>
+        <Authenticator.Provider>
+          <Layout>
             <AppAuthenticator>
               <Component {...pageProps} />
             </AppAuthenticator>
-          </Authenticator.Provider>
-        </ColorModeManager>
+          </Layout>
+        </Authenticator.Provider>
       </AppThemeProvider>
     </>
   );

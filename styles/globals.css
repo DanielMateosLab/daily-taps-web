@@ -12,6 +12,35 @@
   .min-h-screen {
     min-height: 100svh;
   }
+
+  /* Amplify UI theme variables */
+  .bg-primary {
+    background-color: var(--amplify-colors-background-primary);
+  }
+  .bg-secondary {
+    background-color: var(--amplify-colors-background-secondary);
+  }
+  .bg-tertiary {
+    background-color: var(--amplify-colors-background-tertiary);
+  }
+  .bg-quaternary {
+    background-color: var(--amplify-colors-background-quaternary);
+  }
+  .bg-success {
+    background-color: var(--amplify-colors-background-success);
+  }
+  .bg-warning {
+    background-color: var(--amplify-colors-background-warning);
+  }
+  .bg-disabled {
+    background-color: var(--amplify-colors-background-disabled);
+  }
+  .bg-error {
+    background-color: var(--amplify-colors-background-error);
+  }
+  .bg-info {
+    background-color: var(--amplify-colors-background-info);
+  }
 }
 
 *,

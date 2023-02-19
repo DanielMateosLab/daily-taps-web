@@ -12,6 +12,7 @@ const ColorModePicker = () => {
       isExclusive
       // @ts-ignore
       onChange={setColorMode}
+      size="small"
     >
       <ToggleButton value="light" title="light">
         <MdLightMode className="mr-2" /> Light

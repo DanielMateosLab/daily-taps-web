@@ -36,6 +36,10 @@ export default {
       border: {
         primary: { value: "black" },
       },
+      background: {
+        secondary: { value: "{colors.neutral.20}" },
+        tertiary: { value: "{colors.neutral.40}" },
+      },
     },
     shadows: {
       small: {
@@ -107,5 +111,18 @@ export default {
       large: { value: "8px" },
     },
   },
-  overrides: [defaultDarkModeOverride],
+  overrides: [
+    defaultDarkModeOverride,
+    // Example of how to override the defaultDarkModeOverride:
+    // {
+    //   colorMode: "dark",
+    //   tokens: {
+    //     colors: {
+    //       background: {
+    //         secondary: { value: "red" },
+    //       },
+    //     },
+    //   },
+    // },
+  ],
 };
