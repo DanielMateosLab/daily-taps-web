@@ -7,6 +7,7 @@ import {
 } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";
 import { useRouter } from "next/router";
+import WorkoutList from "../src/app-components/WorkoutList";
 import awsExports from "../src/aws-exports";
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -19,15 +20,22 @@ export default function Home() {
   return (
     <View className="flex flex-col items-center justify-center gap-4 pt-8">
       <Heading level={1}>Welcome!</Heading>
+
       <Text variation="secondary">
         You are signed in as {user?.attributes?.email}
       </Text>
-      <Button variation="primary" onClick={() => router.push("/new-workout")}>
-        New Workout
-      </Button>
-      <Button onClick={signOut} className="w-fit">
-        Sign Out
-      </Button>
+
+      <div className="flex gap-2">
+        <Button variation="primary" onClick={() => router.push("/new-workout")}>
+          New Workout
+        </Button>
+
+        <Button onClick={signOut} className="w-fit">
+          Sign Out
+        </Button>
+      </div>
+
+      <WorkoutList />
     </View>
   );
 }
